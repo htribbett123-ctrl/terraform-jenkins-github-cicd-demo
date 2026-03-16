@@ -8,22 +8,28 @@ pipeline {
             }
         }
 
-      stage('Build') {
-           steps {
-              sh 'cd app/demoapp && mvn clean compile'
-          }
-      }
+        stage('Build') {
+            steps {
+                dir('app/demoapp') {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
 
-    stage('Test') {
-        steps {
-            sh 'cd app/demoapp && mvn test'
-         }
-     }
+        stage('Test') {
+            steps {
+                dir('app/demoapp') {
+                    sh 'mvn test'
+                }
+            }
+        }
 
-    stage('Package') {
-       steps {
-          sh 'cd app/demoapp && mvn package'
-         }
-       }
+        stage('Package') {
+            steps {
+                dir('app/demoapp') {
+                    sh 'mvn package'
+                }
+            }
+        }
     }
 }
