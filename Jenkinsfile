@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/tspatel02/mysimplepipeline.git'
+                git branch: 'main', url: 'https://github.com/htribbett123-ctrl/terraform-jenkins-github-cicd-demo.git'
             }
         }
 
