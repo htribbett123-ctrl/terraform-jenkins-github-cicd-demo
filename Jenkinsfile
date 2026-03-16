@@ -2,34 +2,31 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'https://github.com/tspatel02/mysimplepipeline.git'
             }
         }
 
         stage('Build') {
             steps {
-                dir('app/demoapp') {
-                    sh 'mvn clean compile'
-                }
+                bat 'echo Building application'
             }
         }
 
         stage('Test') {
             steps {
-                dir('app/demoapp') {
-                    sh 'mvn test'
-                }
+                bat 'echo Running tests'
             }
         }
 
-        stage('Package') {
+        stage('Deploy') {
             steps {
-                dir('app/demoapp') {
-                    sh 'mvn package'
-                }
+                bat 'echo Deploying'
             }
         }
+
     }
 }
+
